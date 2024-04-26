@@ -27,9 +27,12 @@ app.get("/", (req, res)=>{
 app.post("/register",async (req, res)=>{
     let userData = req.body
     var find;
-    if (userData == undefined) {
-        res.send("Some error")
-    } else {
+    try {
+
+        if (userData == undefined) {
+            res.send("Some error")
+    }
+    } catch(e) {
         console.log(req.body)
         // res.send("Data got")
         User.findOne({
